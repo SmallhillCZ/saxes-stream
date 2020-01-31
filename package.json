@@ -2,7 +2,7 @@
   "name": "saxes-stream",
   "version": "1.0.0",
   "description": "NodeJS Streams wrapper around SaxesParser (package saxes) with single event stream.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "peerDependencies": {
     "saxes": "^4.0.2"
   },
