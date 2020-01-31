@@ -1,5 +1,5 @@
 # SaxesStream
-NodeJS Streams wrapper around SaxesParser (package saxes) with single event stream.
+NodeJS Streams wrapper around [SaxesParser](https://www.npmjs.com/package/saxes) (npm package saxes) with single event stream.
 
 ## API
 
