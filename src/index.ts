@@ -1,19 +1,21 @@
 import { Transform, TransformOptions, TransformCallback } from "stream";
-import { SaxesParser } from "saxes";
+import { SaxesParser, SaxesOptions } from "saxes";
 
-export interface SaxParserChunk {
+export { SaxesOptions } from "saxes";
+
+export interface SaxesStreamChunk {
   path: string;
   event: "opentag" | "text" | "closetag";
-  text: string;
+  text?: string;
 }
 
-export class SaxParser extends Transform {
+export class SaxesStream extends Transform {
 
   parser: SaxesParser;
 
   path: string;
 
-  constructor(saxesOptions: any = {}, streamOptions: TransformOptions = {}) {
+  constructor(saxesOptions: SaxesOptions = {}, streamOptions: TransformOptions = {}) {
 
     const defaultStreamOptions: TransformOptions = {
       readableObjectMode: true,
@@ -41,6 +43,10 @@ export class SaxParser extends Transform {
       this.push({ path: this.path, event: "closetag" })
       this.path = this.path.replace(/\.[^\.]+$/u, "");
     }
+  }
+
+  push(chunk: SaxesStreamChunk, encoding?: string) {
+    return super.push(chunk, encoding);
   }
 
   _transform(chunk: string, encoding: string, callback: TransformCallback) {
