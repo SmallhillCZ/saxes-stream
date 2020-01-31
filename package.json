@@ -1,0 +1,31 @@
+{
+  "name": "saxes-stream",
+  "version": "1.0.0",
+  "description": "NodeJS Streams wrapper around SaxesParser (package saxes) with single event stream.",
+  "main": "index.js",
+  "peerDependencies": {
+    "saxes": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^13.5.3",
+    "saxes": "^4.0.2",
+    "typescript": "^3.7.5"
+  },
+  "scripts": {    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmallhillCZ/saxes-stream.git"
+  },
+  "keywords": [
+    "saxes",
+    "xml",
+    "streams"
+  ],
+  "author": "Martin Kopeček <martin.kopecek@smallhill.cz>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/SmallhillCZ/saxes-stream/issues"
+  },
+  "homepage": "https://github.com/SmallhillCZ/saxes-stream#readme"
+}
