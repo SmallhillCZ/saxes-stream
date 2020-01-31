@@ -1,5 +1,9 @@
 # SaxesStream
-NodeJS Streams wrapper around [SaxesParser](https://www.npmjs.com/package/saxes) (npm package saxes) with single event stream, pipable to other streams.
+NodeJS Streams wrapper around [SaxesParser](https://www.npmjs.com/package/saxes) (npm package saxes)
+ 
+ - Single event stream
+ - Pipable to other streams
+ - TypeScript declarations
 
 ## API
 
@@ -41,8 +45,12 @@ import request from "request";
 import fs from "fs";
 import stringify from "csv-stringify";
 
+
+/* Source HTTP XML stream */
 const httpStream = request(url);
 
+
+/* SaxesStream XML parser */
 const const saxesOptions: SaxesOptions = {
   // ...
 }
@@ -54,6 +62,7 @@ const streamOptions: TransformOptions = {
 const parser = new SaxesStream(saxesOptions, streamOptions);
 
 
+/* Custom Transform Stream to pick the data from XML */
 class BookTransform extends Transform {
 
   item: any = {};
@@ -90,10 +99,16 @@ class BookTransform extends Transform {
 
 const bookTransform = new BookTransform();
 
+
+/* JSON -> CSV Transform Stream */
 const csv = stringify({ delimiter: ',' });
 
+
+/* File Write Stream */
 const file = fs.createWriteStream('./books.csv');
 
+
+/* PIPE ALL THINGS TOGETHER */
 httpStream.pipe(parser).pipe(bookTransform).pipe(csv).pipe(file);
 
 
