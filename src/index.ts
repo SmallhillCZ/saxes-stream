@@ -1,13 +1,12 @@
 import { Transform, TransformOptions, TransformCallback } from "stream";
-import { SaxesParser, SaxesOptions } from "saxes";
+import { SaxesParser, SaxesOptions, SaxesTag } from "saxes";
 
 export { SaxesOptions } from "saxes";
 
-export interface SaxesStreamChunk {
-  path: string;
-  event: "opentag" | "text" | "closetag";
-  text?: string;
-}
+export type SaxesStreamChunk =
+  { event: "opentag", path: string, tag: SaxesTag } |
+  { event: "text", path: string, text: string } |
+  { event: "closetag", path: string, tag: SaxesTag };
 
 export class SaxesStream extends Transform {
 
@@ -32,7 +31,7 @@ export class SaxesStream extends Transform {
 
     this.parser.onopentag = (tag) => {
       this.path = [this.path, tag.name].join(".");
-      this.push({ path: this.path, event: "opentag" })
+      this.push({ path: this.path, event: "opentag", tag })
     }
 
     this.parser.ontext = (text) => {
@@ -40,7 +39,7 @@ export class SaxesStream extends Transform {
     }
 
     this.parser.onclosetag = (tag) => {
-      this.push({ path: this.path, event: "closetag" })
+      this.push({ path: this.path, event: "closetag", tag })
       this.path = this.path.replace(/\.[^\.]+$/u, "");
     }
   }

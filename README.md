@@ -13,23 +13,12 @@ Any string/Buffer Saxes would accept.
 
 #### Output chunk format:
 ```ts
-export interface SaxesStreamChunk {
-  
-  /**
-   * Tag path. Example: .books.book.name for <books><book><name>TEXT</name></book></books>
-   */
-  path: string;
-  
-  /**
-   * Saxes event name. Currently supports: opentag, text and closetag events.
-   */
-  event: "opentag" | "text" | "closetag";
-  
-  /**
-   * Text inside of tag. Only present on text event.
-   */
-  text?: string;
-}
+import { SaxesTag } from "saxes";
+
+export type SaxesStreamChunk =
+  { event: "opentag", path: string, tag: SaxesTag } |
+  { event: "text", path: string, text: string } |
+  { event: "closetag", path: string, tag: SaxesTag };
 ```
 
 #### Events
