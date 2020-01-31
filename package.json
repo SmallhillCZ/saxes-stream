@@ -7,11 +7,16 @@
     "saxes": "^4.0.2"
   },
   "devDependencies": {
+    "@types/jest": "^25.1.1",
     "@types/node": "^13.5.3",
+    "jest": "^25.1.0",
     "saxes": "^4.0.2",
+    "ts-jest": "^25.1.0",
     "typescript": "^3.7.5"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SmallhillCZ/saxes-stream.git"
