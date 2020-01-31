@@ -1,6 +1,6 @@
 {
   "name": "saxes-stream",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NodeJS Streams wrapper around SaxesParser (package saxes) with single event stream.",
   "main": "lib/index.js",
   "peerDependencies": {
@@ -11,8 +11,7 @@
     "saxes": "^4.0.2",
     "typescript": "^3.7.5"
   },
-  "scripts": {    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SmallhillCZ/saxes-stream.git"
