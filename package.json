@@ -4,7 +4,7 @@
   "description": "NodeJS Streams wrapper around SaxesParser (package saxes) with single event stream.",
   "main": "lib/index.js",
   "peerDependencies": {
-    "saxes": "^4.0.2"
+    "saxes": ">=4.0.2"
   },
   "devDependencies": {
     "@types/jest": "^25.1.1",
