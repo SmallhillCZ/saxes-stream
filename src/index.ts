@@ -42,6 +42,10 @@ export class SaxesStream extends Transform {
       this.push({ path: this.path, event: "closetag", tag })
       this.path = this.path.replace(/\.[^\.]+$/u, "");
     }
+
+    this.parser.onerror = (err) => {
+      this.emit("error", err)
+    }
   }
 
   push(chunk: SaxesStreamChunk, encoding?: string) {
