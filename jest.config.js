@@ -4,7 +4,7 @@ module.exports = {
 
     testEnvironment: 'node',
 
-    testRegex: '/tests/.*\\.ts$',
+    testRegex: '/src/tests/.*\\.ts$',
 
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
 

@@ -1,4 +1,4 @@
-import { SaxesStream } from "../src"
+import { SaxesStream } from ".."
 
 
 describe("Should parse XML correctly", () => {
